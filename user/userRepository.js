@@ -25,8 +25,8 @@ async function getUserById(id) {
 
 async function updateUser(user) {
   try {
-    const updatedUser = await userModel.update(user, { where: { id: user.id } });
-    return updatedUser;
+    const updatedUserConunt = await userModel.update(user, { where: { id: user.id } });
+    return updatedUserConunt;
   } catch (error) {
     throw new Error("updateUser 에러");
   }
@@ -34,8 +34,8 @@ async function updateUser(user) {
 
 async function deleteUserByid(id) {
   try {
-    const deletedUser = await userModel.destroy({ where: { id } });
-    return deletedUser;
+    const deletedUserCount = await userModel.destroy({ where: { id } });
+    return deletedUserCount;
   } catch (error) {
     throw new Error("deleteUserByid 에러");
   }

@@ -8,7 +8,7 @@ async function createUser(user) {
 async function getUser(id) {
   const user = await userRepository.getUserById(id);
   if (!user) {
-    throw new BadRequestError("해당하는 id의 유저가 없습니다.");
+    throw new BadRequestError("id에 해당하는 유저가 없습니다.");
   }
   return user;
 }
