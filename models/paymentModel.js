@@ -1,26 +1,21 @@
 const { DataTypes } = require("sequelize");
 
 module.exports = function (sequelize) {
-  const Order = sequelize.define(
-    "order",
+  const Payment = sequelize.define(
+    "payment",
     {
       id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
       },
-      productId: {
-        type: DataTypes.INTEGER,
-      },
       userId: {
         type: DataTypes.INTEGER,
       },
-      status: {
+      price: {
         type: DataTypes.INTEGER,
-        default: 0,
       },
     },
     { charset: "utf8mb4", collate: "utf8mb4_general_ci", timestamps: true }
   );
-  return Order;
 };

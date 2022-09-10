@@ -11,14 +11,17 @@ const sequelize = new Sequelize(DB.DATABASE, DB.USERNAME, DB.PASSWORD, {
 const defineUserModel = require("./userModel");
 const defineProductModel = require("./productModel");
 const defineOrderModel = require("./orderModel");
+const definePaymentModel = require("./paymentModel");
 
 const userModel = defineUserModel(sequelize);
 const productModel = defineProductModel(sequelize);
 const orderModel = defineOrderModel(sequelize);
+const paymentModel = definePaymentModel(sequelize);
 
 module.exports = {
   sequelize,
   userModel,
   productModel,
   orderModel,
+  paymentModel,
 };
