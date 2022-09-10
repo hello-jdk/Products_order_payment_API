@@ -1,5 +1,5 @@
 const { userModel } = require("../models/index");
-const { ConflictError } = require("../httpErrors");
+const { ConflictError, NotFoundError } = require("../httpErrors");
 
 async function createUser(user) {
   try {
@@ -19,4 +19,14 @@ async function getUserById(id) {
   }
 }
 
-module.exports = { createUser, getUserById };
+async function updateUser(user) {
+  console.log("userID", user);
+  try {
+    const updatedUser = await userModel.update(user, { where: { id: user.id } });
+    return updatedUser;
+  } catch (error) {
+    throw new NotFoundError("id에 해당하는 유저가 없습니다.");
+  }
+}
+
+module.exports = { createUser, getUserById, updateUser };

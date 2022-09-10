@@ -21,4 +21,14 @@ async function getUser(req, res, next) {
   }
 }
 
-module.exports = { createUser, getUser };
+async function updateUser(req, res, next) {
+  const user = req.body;
+  try {
+    await UserService.updateUser(user);
+    return res.status(StatusCodes.CREATED).send({ message: "UPDATED" });
+  } catch (error) {
+    next(error);
+  }
+}
+
+module.exports = { createUser, getUser, updateUser };

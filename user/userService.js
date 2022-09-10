@@ -13,4 +13,8 @@ async function getUser(id) {
   return user;
 }
 
-module.exports = { createUser, getUser };
+async function updateUser(user) {
+  await userRepository.updateUser(user);
+}
+
+module.exports = { createUser, getUser, updateUser };
