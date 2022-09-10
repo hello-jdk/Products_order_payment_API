@@ -9,4 +9,13 @@ async function createUser(user) {
   }
 }
 
-module.exports = { createUser };
+async function getUserById(id) {
+  try {
+    const User = await userModel.findByPk(id);
+    return User;
+  } catch (error) {
+    console.error(error.message);
+  }
+}
+
+module.exports = { createUser, getUserById };
