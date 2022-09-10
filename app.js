@@ -2,6 +2,7 @@ const { PORT } = require("./config/config");
 
 const express = require("express");
 const logger = require("morgan");
+const { errorLogger, errorResponser } = require("./httpErrors");
 
 const userRouter = require("./user/userRouter");
 
@@ -35,17 +36,23 @@ function middlewareLoader(app) {
 }
 
 /**
+ * 웹 서비스의 error handler 설정
+ */
+function errorHandler(app) {
+  app.use(errorLogger);
+  app.use(errorResponser);
+
+  return app;
+}
+
+/**
  * 웹 서비스의 API Routers 등록
  * @param {express.Application} app
  * @returns {express.Application}
  */
 
 function routersRegister(app) {
-  app.use("api/users", userRouter);
-
-  app.use("/", (req, res) => {
-    return res.status(200).json("OK");
-  });
+  app.use("/api/users", userRouter);
 
   //app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
@@ -61,6 +68,7 @@ async function expressInit() {
   databaseConnection();
   middlewareLoader(app);
   routersRegister(app);
+  errorHandler(app);
 
   return app.listen(PORT, () => {
     console.log("Running server on " + PORT);
