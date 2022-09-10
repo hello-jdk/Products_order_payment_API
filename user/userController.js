@@ -31,4 +31,15 @@ async function updateUser(req, res, next) {
   }
 }
 
-module.exports = { createUser, getUser, updateUser };
+async function deleteUser(req, res, next) {
+  const id = req.params.id;
+  try {
+    await UserService.deleteUser(id);
+    return res.status(StatusCodes.OK).send({ message: "DELETED" });
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+}
+
+module.exports = { createUser, getUser, updateUser, deleteUser };
