@@ -26,7 +26,12 @@ module.exports = function (sequelize) {
         default: 0,
       },
     },
-    { charset: "utf8mb4", collate: "utf8mb4_general_ci" }
+    {
+      charset: "utf8mb4",
+      collate: "utf8mb4_general_ci",
+      timestamps: true,
+      paranoid: true,
+    }
   );
   return Product;
 };
