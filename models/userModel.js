@@ -9,12 +9,12 @@ module.exports = function (sequelize) {
         autoIncrement: true,
         primarykey: true,
       },
-      userName: {
+      name: {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
       },
-      userGrade: {
+      grade: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
