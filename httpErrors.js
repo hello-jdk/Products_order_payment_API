@@ -38,6 +38,13 @@ class NotFoundError extends BasicError {
   }
 }
 
+//409
+class ConflictError extends BasicError {
+  constructor(message) {
+    super("ConfilctError", message, StatusCodes.CONFLICT);
+  }
+}
+
 // error 서버로그용
 const errorLogger = (err, req, res, next) => {
   next(err);
@@ -61,6 +68,7 @@ module.exports = {
   UnauthorizedError,
   ForbiddenError,
   NotFoundError,
+  ConflictError,
   errorLogger,
   errorResponser,
 };
