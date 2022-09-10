@@ -37,6 +37,8 @@ function middlewareLoader(app) {
 
 /**
  * 웹 서비스의 error handler 설정
+ * @param {express.Application} app
+ * @returns {express.Application}
  */
 function errorHandler(app) {
   app.use(errorLogger);
@@ -50,7 +52,6 @@ function errorHandler(app) {
  * @param {express.Application} app
  * @returns {express.Application}
  */
-
 function routersRegister(app) {
   app.use("/api/users", userRouter);
 
