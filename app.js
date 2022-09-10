@@ -14,7 +14,7 @@ const logger = require("morgan");
 function databaseConnection() {
   const { sequelize } = require("./models");
 
-  sequelize.sync({ force: false }).catch((error) => {
+  sequelize.sync({ force: true }).catch((error) => {
     console.error(error);
   });
 }
