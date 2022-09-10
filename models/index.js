@@ -8,9 +8,10 @@ const sequelize = new Sequelize(DB.DATABASE, DB.USERNAME, DB.PASSWORD, {
 });
 
 // TODO : 테이블 데이터 정의
-//const definePostModel = require("./postModel");
-//const postModel = definePostModel(sequelize);
+const defineUserModel = require("./userModel");
+const userModel = defineUserModel(sequelize);
 
 module.exports = {
   sequelize,
+  userModel,
 };
