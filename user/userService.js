@@ -1,5 +1,5 @@
 const userRepository = require("./userRepository");
-const { BadRequestError, NotFoundError } = require("../httpErrors");
+const { BadRequestError } = require("../httpErrors");
 
 async function createUser(user) {
   await userRepository.createUser(user);

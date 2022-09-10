@@ -1,5 +1,5 @@
 const { userModel } = require("../models/index");
-const { ConflictError, NotFoundError } = require("../httpErrors");
+const { ConflictError } = require("../httpErrors");
 
 async function createUser(user) {
   try {
