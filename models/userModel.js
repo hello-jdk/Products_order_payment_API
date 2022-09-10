@@ -2,12 +2,12 @@ const { DataTypes } = require("sequelize");
 
 module.exports = function (sequelize) {
   const User = sequelize.define(
-    "post",
+    "User",
     {
       id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
-        primarykey: true,
+        primaryKey: true,
       },
       name: {
         type: DataTypes.STRING,
