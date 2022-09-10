@@ -1,25 +1,23 @@
-const { statusCodes } = require("http-status-codes");
+const { StatusCodes } = require("http-status-codes");
 const UserService = require("./userService");
 
-async function createUser(req, res) {
+async function createUser(req, res, next) {
   const user = req.body;
   try {
     await UserService.createUser(user);
-    return res.statusCodes(statusCodes.CREATED).send({ message: "CREATED" });
+    return res.status(StatusCodes.CREATED).send({ message: "CREATED" });
   } catch (error) {
-    console.error(error.message);
-    return res.status(statusCodes.INTERNAL_SERVER_ERROR).send({ message: "ERROR" });
+    next(error);
   }
 }
 
-async function getUser(req, res) {
+async function getUser(req, res, next) {
   const id = req.params.id;
   try {
-    await UserService.getUser(id);
-    return res.statusCodes(statusCodes.CREATED).send({ message: "CREATED" });
+    const User = await UserService.getUser(id);
+    return res.status(StatusCodes.OK).send({ message: "OK", data: User });
   } catch (error) {
-    console.error(error.message);
-    return res.status(statusCodes.INTERNAL_SERVER_ERROR).send({ message: "ERROR" });
+    next(error);
   }
 }
 
