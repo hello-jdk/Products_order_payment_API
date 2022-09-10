@@ -17,7 +17,7 @@ const userRouter = require("./user/userRouter");
 function databaseConnection() {
   const { sequelize } = require("./models");
 
-  sequelize.sync({ force: true }).catch((error) => {
+  sequelize.sync({ force: false }).catch((error) => {
     console.error(error);
   });
 }

@@ -47,6 +47,9 @@ class ConflictError extends BasicError {
 
 // error 서버로그용
 const errorLogger = (err, req, res, next) => {
+  if (!err?.isCustom) {
+    console.error(err);
+  }
   next(err);
 };
 
