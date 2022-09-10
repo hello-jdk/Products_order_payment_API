@@ -3,6 +3,8 @@ const { PORT } = require("./config/config");
 const express = require("express");
 const logger = require("morgan");
 
+const userRouter = require("./user/userRouter");
+
 // TODO : swagger 작성
 //const swaggerUi = require("swagger-ui-express");
 //const YAML = require("yamljs");
@@ -37,10 +39,14 @@ function middlewareLoader(app) {
  * @param {express.Application} app
  * @returns {express.Application}
  */
+
 function routersRegister(app) {
+  app.use("api/users", userRouter);
+
   app.use("/", (req, res) => {
     return res.status(200).json("OK");
   });
+
   //app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
   return app;
