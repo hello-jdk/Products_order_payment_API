@@ -14,8 +14,8 @@ async function createUser(req, res, next) {
 async function getUser(req, res, next) {
   const id = req.params.id;
   try {
-    const User = await UserService.getUser(id);
-    return res.status(StatusCodes.OK).send({ message: "OK", data: User });
+    const user = await UserService.getUser(id);
+    return res.status(StatusCodes.OK).send({ message: "OK", data: user });
   } catch (error) {
     next(error);
   }

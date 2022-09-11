@@ -11,4 +11,14 @@ async function createProduct(req, res, next) {
   }
 }
 
-module.exports = { createProduct };
+async function getProduct(req, res, next) {
+  const id = req.params.id;
+  try {
+    const product = await productService.getProduct(id);
+    return res.status(StatusCodes.OK).send({ message: "OK", data: product });
+  } catch (error) {
+    next(error);
+  }
+}
+
+module.exports = { createProduct, getProduct };

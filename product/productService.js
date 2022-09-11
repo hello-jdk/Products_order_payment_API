@@ -1,7 +1,16 @@
 const productRepository = require("./productRepository");
+const { BadRequestError } = require("../httpErrors");
 
 async function createProduct(product) {
   await productRepository.createProduct(product);
 }
 
-module.exports = { createProduct };
+async function getProduct(id) {
+  const product = await productRepository.getProductById(id);
+  if (!product) {
+    throw new BadRequestError("id에 해당하는 상품이 없습니다.");
+  }
+  return product;
+}
+
+module.exports = { createProduct, getProduct };
