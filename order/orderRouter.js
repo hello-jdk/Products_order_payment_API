@@ -4,6 +4,7 @@ const orderController = require("./orderController");
 //TODO: 유효성 검사
 
 router.post("/", orderController.createOrder);
+router.get("/list/:userId", orderController.getOrders);
 router.get("/:id", orderController.getOrder);
 router.put("/", orderController.updateOrder);
 router.delete("/:id", orderController.deleteOrder);
