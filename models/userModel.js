@@ -26,5 +26,13 @@ module.exports = function (sequelize) {
       paranoid: true,
     }
   );
+
+  User.associate = (models) => {
+    User.hasMany(models.Order, {
+      foreignKey: { name: "userId", allowNull: false },
+      sourceKey: "id",
+    });
+  };
+
   return User;
 };
