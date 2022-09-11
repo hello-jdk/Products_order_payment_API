@@ -21,6 +21,16 @@ async function getOrder(req, res, next) {
   }
 }
 
+async function getOrders(req, res, next) {
+  const userId = req.params.userId;
+  try {
+    const orderList = await orderService.getOrders(userId);
+    return res.status(StatusCodes.OK).send({ message: "OK", data: orderList });
+  } catch (error) {
+    next(error);
+  }
+}
+
 async function updateOrder(req, res, next) {
   const order = req.body;
   try {
@@ -41,4 +51,4 @@ async function deleteOrder(req, res, next) {
   }
 }
 
-module.exports = { createOrder, getOrder, updateOrder, deleteOrder };
+module.exports = { createOrder, getOrder, getOrders, updateOrder, deleteOrder };
