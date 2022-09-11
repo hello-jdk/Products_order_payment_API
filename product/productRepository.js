@@ -21,4 +21,13 @@ async function getProductById(id) {
   }
 }
 
-module.exports = { createProduct, getProductById };
+async function updateProduct(product) {
+  try {
+    const updatedProductCount = await productModel.update(product, { where: { id: product.id } });
+    return updatedProductCount;
+  } catch (error) {
+    throw new Error("updateProduct 에러");
+  }
+}
+
+module.exports = { createProduct, getProductById, updateProduct };

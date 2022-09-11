@@ -21,4 +21,14 @@ async function getProduct(req, res, next) {
   }
 }
 
-module.exports = { createProduct, getProduct };
+async function updateProduct(req, res, next) {
+  const product = req.body;
+  try {
+    await productService.updateProduct(product);
+    return res.status(StatusCodes.CREATED).send({ message: "UPDATED" });
+  } catch (error) {
+    next(error);
+  }
+}
+
+module.exports = { createProduct, getProduct, updateProduct };

@@ -13,4 +13,12 @@ async function getProduct(id) {
   return product;
 }
 
-module.exports = { createProduct, getProduct };
+async function updateProduct(product) {
+  const updatedProductCount = await productRepository.updateProduct(product);
+  if (updatedProductCount != 1) {
+    throw new BadRequestError("id에 해당하는 상품이 없습니다.");
+  }
+  return true;
+}
+
+module.exports = { createProduct, getProduct, updateProduct };
