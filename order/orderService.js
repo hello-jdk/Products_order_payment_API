@@ -12,15 +12,15 @@ async function getOrder(id) {
   return order;
 }
 async function updateOrder(order) {
-  const updatedorderCount = await orderRepository.updateOrder(order);
-  if (updatedorderCount != 1) {
+  const updatedOrderCount = await orderRepository.updateOrder(order);
+  if (updatedOrderCount != 1) {
     throw new BadRequestError("id에 해당하는 주문이 없습니다.");
   }
   return true;
 }
 async function deleteOrder(id) {
-  const deletedorderCount = await orderRepository.deleteOrderById(id);
-  if (deletedorderCount != 1) {
+  const deletedOrderCount = await orderRepository.deleteOrderById(id);
+  if (deletedOrderCount != 1) {
     throw new BadRequestError("id에 해당하는 주문이 없습니다.");
   }
   return true;
