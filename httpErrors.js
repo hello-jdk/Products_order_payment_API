@@ -38,7 +38,7 @@ class NotFoundError extends BasicError {
   }
 }
 
-//409
+//409 리소스충돌
 class ConflictError extends BasicError {
   constructor(message) {
     super("ConfilctError", message, StatusCodes.CONFLICT);

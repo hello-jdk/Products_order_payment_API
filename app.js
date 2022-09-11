@@ -5,6 +5,7 @@ const logger = require("morgan");
 const { errorLogger, errorResponser } = require("./httpErrors");
 
 const userRouter = require("./user/userRouter");
+const productRouter = require("./product/productRouter");
 
 // TODO : swagger 작성
 //const swaggerUi = require("swagger-ui-express");
@@ -54,6 +55,7 @@ function errorHandler(app) {
  */
 function routersRegister(app) {
   app.use("/api/users", userRouter);
+  app.use("/api/products", productRouter);
 
   //app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 

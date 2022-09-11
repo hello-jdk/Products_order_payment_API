@@ -23,10 +23,16 @@ module.exports = function (sequelize) {
       },
       stock: {
         type: DataTypes.INTEGER,
-        default: 0,
+        defaultValue: 0,
+        allowNull: false,
       },
     },
-    { charset: "utf8mb4", collate: "utf8mb4_general_ci" }
+    {
+      charset: "utf8mb4",
+      collate: "utf8mb4_general_ci",
+      timestamps: true,
+      paranoid: true,
+    }
   );
   return Product;
 };

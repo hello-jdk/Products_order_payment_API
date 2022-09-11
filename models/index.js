@@ -7,7 +7,7 @@ const sequelize = new Sequelize(DB.DATABASE, DB.USERNAME, DB.PASSWORD, {
   logging: false,
 });
 
-// TODO : 테이블 데이터 정의
+//테이블 데이터 정의
 const defineUserModel = require("./userModel");
 const defineProductModel = require("./productModel");
 const defineOrderModel = require("./orderModel");
