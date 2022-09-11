@@ -30,4 +30,13 @@ async function updateProduct(product) {
   }
 }
 
-module.exports = { createProduct, getProductById, updateProduct };
+async function deleteProductById(id) {
+  try {
+    const deletedProductCount = await productModel.destroy({ where: { id } });
+    return deletedProductCount;
+  } catch (error) {
+    throw new Error("deleteProductById 에러");
+  }
+}
+
+module.exports = { createProduct, getProductById, updateProduct, deleteProductById };
