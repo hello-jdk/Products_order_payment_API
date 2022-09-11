@@ -1,7 +1,9 @@
 const { BadRequestError } = require("../httpErrors");
-const { orderModel } = require("../models/index");
+const { orderModel, userModel, sequelize } = require("../models/index");
 
 async function createOrder(order) {
+  //TODO: 트랜잭션 상품재고
+
   try {
     const createdOrder = await orderModel.create(order);
     return createdOrder;
@@ -21,7 +23,17 @@ async function getOrderById(id) {
     throw new Error("getOrderById 에러");
   }
 }
+async function getOrderListByUserId(userId) {
+  try {
+    const orderList = await orderModel.findAll({ where: { userId } });
+    return orderList;
+  } catch (error) {
+    throw new Error("getOrderListByUserId 에러");
+  }
+}
 async function updateOrder(order) {
+  //TODO: 트랜잭션 상품재고
+
   try {
     const updatedOrderCount = await orderModel.update(order, { where: { id: order.id } });
     return updatedOrderCount;
@@ -38,4 +50,4 @@ async function deleteOrderById(id) {
   }
 }
 
-module.exports = { createOrder, getOrderById, updateOrder, deleteOrderById };
+module.exports = { createOrder, getOrderById, getOrderListByUserId, updateOrder, deleteOrderById };
