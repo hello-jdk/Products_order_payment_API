@@ -1,0 +1,9 @@
+const router = require("express").Router();
+const orderController = require("./orderController");
+
+router.post("/", orderController.createOrder);
+router.get("/:id", orderController.getOrder);
+router.put("/", orderController.updateOrder);
+router.delete("/:id", orderController.deleteOrder);
+
+module.exports = router;
