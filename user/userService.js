@@ -14,16 +14,16 @@ async function getUser(id) {
 }
 
 async function updateUser(user) {
-  const updateduserConunt = await userRepository.updateUser(user);
-  if (updateduserConunt != 1) {
+  const updatedUserConunt = await userRepository.updateUser(user);
+  if (updatedUserConunt != 1) {
     throw new BadRequestError("id에 해당하는 유저가 없습니다.");
   }
   return true;
 }
 
 async function deleteUser(id) {
-  const deleteduserCount = await userRepository.deleteUserByid(id);
-  if (deleteduserCount != 1) {
+  const deletedUserCount = await userRepository.deleteUserByid(id);
+  if (deletedUserCount != 1) {
     throw new BadRequestError("id에 해당하는 유저가 없습니다.");
   }
   return true;

@@ -5,7 +5,7 @@ async function createProduct(req, res, next) {
   const product = req.body;
   try {
     await productService.createProduct(product);
-    return res.status(StatusCodes.CREATED).send({ message: "CREATED" });
+    return res.status(StatusCodes.OK).send({ message: "CREATED" });
   } catch (error) {
     next(error);
   }
@@ -25,7 +25,7 @@ async function updateProduct(req, res, next) {
   const product = req.body;
   try {
     await productService.updateProduct(product);
-    return res.status(StatusCodes.CREATED).send({ message: "UPDATED" });
+    return res.status(StatusCodes.OK).send({ message: "UPDATED" });
   } catch (error) {
     next(error);
   }

@@ -2,7 +2,7 @@ const { DataTypes } = require("sequelize");
 
 module.exports = function (sequelize) {
   const Payment = sequelize.define(
-    "payment",
+    "Payment",
     {
       id: {
         type: DataTypes.INTEGER,
@@ -18,4 +18,6 @@ module.exports = function (sequelize) {
     },
     { charset: "utf8mb4", collate: "utf8mb4_general_ci", timestamps: true }
   );
+
+  return Payment;
 };

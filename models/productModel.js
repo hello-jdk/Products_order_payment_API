@@ -2,7 +2,7 @@ const { DataTypes } = require("sequelize");
 
 module.exports = function (sequelize) {
   const Product = sequelize.define(
-    "product",
+    "Product",
     {
       id: {
         type: DataTypes.INTEGER,
@@ -34,5 +34,13 @@ module.exports = function (sequelize) {
       paranoid: true,
     }
   );
+
+  Product.associate = (models) => {
+    Product.hasMany(models.Order, {
+      foreignKey: { name: "productId", allowNull: false },
+      sourceKey: "id",
+    });
+  };
+
   return Product;
 };

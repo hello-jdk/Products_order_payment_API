@@ -5,7 +5,7 @@ async function createUser(req, res, next) {
   const user = req.body;
   try {
     await UserService.createUser(user);
-    return res.status(StatusCodes.CREATED).send({ message: "CREATED" });
+    return res.status(StatusCodes.OK).send({ message: "CREATED" });
   } catch (error) {
     next(error);
   }
@@ -25,7 +25,7 @@ async function updateUser(req, res, next) {
   const user = req.body;
   try {
     await UserService.updateUser(user);
-    return res.status(StatusCodes.CREATED).send({ message: "UPDATED" });
+    return res.status(StatusCodes.OK).send({ message: "UPDATED" });
   } catch (error) {
     next(error);
   }
