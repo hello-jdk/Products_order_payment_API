@@ -14,15 +14,21 @@ module.exports = function (sequelize) {
         allowNull: false,
       },
       orderListId: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false,
       },
     },
-    { charset: "utf8mb4", collate: "utf8mb4_general_ci", timestamps: true }
+    {
+      charset: "utf8mb4",
+      collate: "utf8mb4_general_ci",
+      timestamps: true,
+      paranoid: true,
+    }
   );
 
   Payment.associate = (models) => {
     Payment.belongsTo(models.User, { foreignKey: { name: "userId", allowNull: false } });
+    Payment.belongsTo(models.OrderList, { foreignKey: { name: "orderListId", allowNull: false } });
   };
 
   return Payment;
