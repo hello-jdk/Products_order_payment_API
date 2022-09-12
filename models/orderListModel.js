@@ -18,11 +18,20 @@ module.exports = function (sequelize) {
         allowNull: false,
       },
     },
-    { charset: "utf8mb4", collate: "utf8mb4_general_ci", timestamps: true, paranoid: true }
+    {
+      charset: "utf8mb4",
+      collate: "utf8mb4_general_ci",
+      timestamps: true,
+      paranoid: true,
+    }
   );
 
   OrderList.associate = (models) => {
     OrderList.belongsTo(models.User, { foreignKey: { name: "userId", allowNull: false } });
+    OrderList.hasOne(models.Payment, {
+      foreignKey: { name: "orderListId", allowNull: false },
+      sourceKey: "id",
+    });
   };
 
   return OrderList;
