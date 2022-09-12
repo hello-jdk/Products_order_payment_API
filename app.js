@@ -61,6 +61,7 @@ function routersRegister(app) {
   app.use("/api/products", productRouter);
   app.use("/api/orders", orderRouter);
   app.use("/api/orderlists", orderlistRouter);
+  app.use("/api/payments", paymentRouter);
 
   //app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
