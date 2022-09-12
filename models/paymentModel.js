@@ -11,13 +11,19 @@ module.exports = function (sequelize) {
       },
       userId: {
         type: DataTypes.INTEGER,
+        allowNull: false,
       },
-      price: {
-        type: DataTypes.INTEGER,
+      orderListId: {
+        type: DataTypes.STRING,
+        allowNull: false,
       },
     },
     { charset: "utf8mb4", collate: "utf8mb4_general_ci", timestamps: true }
   );
+
+  Payment.associate = (models) => {
+    Payment.belongsTo(models.User, { foreignKey: { name: "userId", allowNull: false } });
+  };
 
   return Payment;
 };
