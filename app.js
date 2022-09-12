@@ -7,6 +7,7 @@ const { errorLogger, errorResponser } = require("./httpErrors");
 const userRouter = require("./user/userRouter");
 const productRouter = require("./product/productRouter");
 const orderRouter = require("./order/orderRouter");
+const orderlistRouter = require("./orderlist/orderlistRouter");
 
 // TODO : swagger 작성
 //const swaggerUi = require("swagger-ui-express");
@@ -58,6 +59,7 @@ function routersRegister(app) {
   app.use("/api/users", userRouter);
   app.use("/api/products", productRouter);
   app.use("/api/orders", orderRouter);
+  app.use("/api/orderlists", orderlistRouter);
 
   //app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
