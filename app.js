@@ -8,6 +8,7 @@ const userRouter = require("./user/userRouter");
 const productRouter = require("./product/productRouter");
 const orderRouter = require("./order/orderRouter");
 const paymentRouter = require("./payment/paymentRouter");
+const orderlistRouter = require("./orderlist/orderlistRouter");
 
 // TODO : swagger 작성
 //const swaggerUi = require("swagger-ui-express");
@@ -20,7 +21,7 @@ const paymentRouter = require("./payment/paymentRouter");
 function databaseConnection() {
   const { sequelize } = require("./models");
 
-  sequelize.sync({ force: false }).catch((error) => {
+  sequelize.sync({ force: false, alter: true }).catch((error) => {
     console.error(error);
   });
 }
@@ -59,7 +60,7 @@ function routersRegister(app) {
   app.use("/api/users", userRouter);
   app.use("/api/products", productRouter);
   app.use("/api/orders", orderRouter);
-  app.use("/api/payments", paymentRouter);
+  app.use("/api/orderlists", orderlistRouter);
 
   //app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 

@@ -32,6 +32,10 @@ module.exports = function (sequelize) {
       foreignKey: { name: "userId", allowNull: false },
       sourceKey: "id",
     });
+    User.hasMany(models.OrderList, {
+      foreignKey: { name: "userId", allowNull: false },
+      sourceKey: "id",
+    });
   };
 
   return User;
