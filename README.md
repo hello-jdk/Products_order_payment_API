@@ -1,3 +1,4 @@
+
 # 회원 정보 & 상품 장바구니,주문,결제 관리 API 서버
 
 **22.09.10 ~ 22.09.14**
@@ -12,7 +13,7 @@
 
 ### ERD
 
-<img width="100%" alt="1" src="./Local&Life.png">
+<img width="100%" alt="1" src="https://user-images.githubusercontent.com/57665888/189957429-d67bdf3c-8a79-46bb-8670-064acedd6074.png">
 
 - 회원 `users`
 - 상품 `products`
