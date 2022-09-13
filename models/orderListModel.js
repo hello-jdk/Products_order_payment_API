@@ -13,7 +13,7 @@ module.exports = function (sequelize) {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      productIdList: {
+      orderIdList: {
         type: DataTypes.STRING,
         allowNull: false,
       },
