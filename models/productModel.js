@@ -9,6 +9,10 @@ module.exports = function (sequelize) {
         autoIncrement: true,
         primaryKey: true,
       },
+      userId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
       name: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -36,6 +40,7 @@ module.exports = function (sequelize) {
   );
 
   Product.associate = (models) => {
+    Product.belongsTo(models.User, { foreignKey: { name: "userId", allowNull: false } });
     Product.hasMany(models.Order, {
       foreignKey: { name: "productId", allowNull: false },
       sourceKey: "id",
