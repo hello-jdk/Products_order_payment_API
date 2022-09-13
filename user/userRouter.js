@@ -1,12 +1,11 @@
 const router = require("express").Router();
 
 const userController = require("./userController");
+const userMiddleWare = require("./userMiddleware");
 
-//TODO : 유효성 검사
-
-router.post("/", userController.createUser);
+router.post("/", userMiddleWare.isValid, userController.createUser);
 router.get("/:id", userController.getUser);
-router.patch("/", userController.updateUser);
+router.patch("/", userMiddleWare.isValid, userController.updateUser);
 router.delete("/:id", userController.deleteUser);
 
 module.exports = router;

@@ -1,11 +1,10 @@
 const router = require("express").Router();
 const productController = require("./productController");
+const productMiddleware = require("./productMiddleware");
 
-//TODO: 유효성 검사
-
-router.post("/", productController.createProduct);
+router.post("/", productMiddleware.isValid, productController.createProduct);
 router.get("/:id", productController.getProduct);
-router.put("/", productController.updateProduct);
+router.put("/", productMiddleware.isValid, productController.updateProduct);
 router.delete("/:id", productController.deleteProduct);
 
 module.exports = router;
