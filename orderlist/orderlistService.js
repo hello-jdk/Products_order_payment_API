@@ -8,8 +8,8 @@ const { BadRequestError } = require("../httpErrors");
 
 async function createOrderlist(orderList) {
   //상품 재고 확인
-  for (let i = 0; i < orderList.productIdList.length; i++) {
-    const order = await orderRepository.getOrderById(orderList.productIdList[i]);
+  for (let i = 0; i < orderList.ordersList.length; i++) {
+    const order = await orderRepository.getOrderById(orderList.ordersList[i]);
     let orderProductId = order.productId;
     let orderProductCount = order.productCount;
 
@@ -22,7 +22,7 @@ async function createOrderlist(orderList) {
   }
 
   //주문내역리스트 생성
-  orderList.productIdList = orderList.productIdList.join(",");
+  orderList.ordersList = orderList.ordersList.join(",");
   await orderlistRepository.createOrderlist(orderList);
 }
 async function getOrderlists(userId) {
@@ -55,7 +55,7 @@ async function updateOrderlist(orderList) {
     throw new BadRequestError("id에 해당하는 주문내역리스트가 없습니다.");
   }
 
-  orderList.productIdList = orderList.productIdList.join(",");
+  orderList.ordersList = orderList.ordersList.join(",");
   await orderlistRepository.updateOrderlist(orderList);
 }
 async function deleteOrderlist(id) {
